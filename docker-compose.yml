@@ -8,13 +8,49 @@ services:
     ports:
       - 3000:3000
     build:
-      context: .
-      dockerfile: front-end/Dockerfile
+      context: ./front-end
+      dockerfile: Dockerfile
     stdin_open: true
     networks:
       - athena
     env_file:
       - ./front-end/.env
+
+  back-end:
+    image: "athena-back-end-app:latest"
+    container_name: "athena-back-end-app"
+    entrypoint: /entrypoint.sh
+    restart: always
+    ports:
+      - 8000:8000
+    build:
+      context: ./back-end
+      dockerfile: docker/django/Dockerfile
+    env_file:
+      - ./back-end/.env
+    depends_on:
+      - db
+    volumes:
+      - ./back-end/athena/static:/app/athena/static
+    networks:
+      - athena
+  
+  nginx:
+    image: "athena-nginx:latest"
+    container_name: "athena-nginx"
+    restart: always
+    ports:
+      - 80:80
+    build:
+      context: ./back-end
+      dockerfile: docker/nginx/Dockerfile
+    depends_on:
+      - back-end
+      - db
+    volumes:
+      - ./back-end/athena/static:/static
+    networks:
+      - athena
 
   db:
     image: "mariadb:latest"
@@ -23,8 +59,6 @@ services:
     container_name: athena_db
     ports:
       - 3306:3306
-    labels:
-        name: "athena_db"
     volumes:
       - ./athena_database:/var/www/html
     environment:
