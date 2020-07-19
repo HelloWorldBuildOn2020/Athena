@@ -1,6 +1,21 @@
 version: "3.8"
 
 services:
+  front-end:
+    image: "athena-front-end-app:latest"
+    container_name: "athena-front-end-app"
+    restart: always
+    ports:
+      - 3000:3000
+    build:
+      context: .
+      dockerfile: front-end/Dockerfile
+    stdin_open: true
+    networks:
+      - athena
+    env_file:
+      - ./front-end/.env
+
   db:
     image: "mariadb:latest"
     command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
