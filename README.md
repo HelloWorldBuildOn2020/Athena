@@ -4,12 +4,24 @@ Hackathon build on Thailand 2020 -- Opendurian -- HelloWorld Team.
 
 #### How to start project ?
 ##### Back-end
-1. change environment
+
+1. Start MariaDB database via docker-compose
+```bash
+docker-compose up db -d
+```
+
+2. change environment
 ```bash
 pipenv shell
 ```
+3. Copy env example
+```bash
+cd back-end
+cp env.example .env
+```
+> Don't forget update env variables
 
-2. Install dependency in requirements.txt
+4. Install dependency in requirements.txt
 ```bash
 cd back-end
 pip install -r requirements.txt
@@ -18,8 +30,7 @@ pip install -r requirements.txt
 > Note
   For the first time run `python manage.py makemigrations` and `python manage.py migrate`
 
-
-3. Start server
+5. Start server
 ```bash
 cd athena
 python manage.py runserver
@@ -43,4 +54,10 @@ cd front-end
 3. Start Project
 ```bash
 yarn start
+```
+
+##### Docker-compose
+1. Start all services
+```bash
+$ docker-compose up
 ```
