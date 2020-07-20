@@ -16,7 +16,7 @@ $ docker-compose up
 
 1. Copy env example
 ```bash
-cp back-end/env.example back-end/.env
+cp back-end/.env.example back-end/.env
 ```
 > Don't forget update env variables
 
