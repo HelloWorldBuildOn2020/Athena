@@ -2,7 +2,16 @@
 ---
 Hackathon build on Thailand 2020 -- Opendurian -- HelloWorld Team.
 
-#### How to start project ?
+### How to start project ?
+
+#### Start by Docker-compose
+1. Start all services
+```bash
+$ docker-compose up
+```
+
+------
+#### Manual Start
 ##### Back-end
 
 1. Start MariaDB database via docker-compose
@@ -10,7 +19,7 @@ Hackathon build on Thailand 2020 -- Opendurian -- HelloWorld Team.
 docker-compose up db -d
 ```
 
-2. change environment
+2. Change environment
 ```bash
 pipenv shell
 ```
@@ -38,7 +47,8 @@ python manage.py runserver
 
 4. Type http://localhost:8000 in your browser and press Enter
 
-##### Front-end
+
+###### Front-end
 
 1. Change work directory.
 ```bash
@@ -56,8 +66,4 @@ cd front-end
 yarn start
 ```
 
-##### Docker-compose
-1. Start all services
-```bash
-$ docker-compose up
-```
+Enjoy your work ✌ -- By HelloWorld Team.
