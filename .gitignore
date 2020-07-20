@@ -1,3 +1,5 @@
 athena_database/
 db.sqlite3
 *.pyc
+static/
+.env
