@@ -16,7 +16,7 @@ $ docker-compose up
 
 1. Start MariaDB database via docker-compose
 ```bash
-docker-compose up db -d
+docker-compose up -d db
 ```
 
 2. Change environment
