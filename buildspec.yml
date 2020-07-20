@@ -12,12 +12,10 @@ phases:
       - echo Building the Docker image...
       - docker build -t $AWS_ECR_REPO:FE_$CODEBUILD_BUILD_NUMBER -f ./front-end/Dockerfile ./front-end
       - docker build -t $AWS_ECR_REPO:BE_$CODEBUILD_BUILD_NUMBER -f ./back-end/docker/django/Dockerfile ./back-end
-      - docker build -t $AWS_ECR_REPO:$IMAGE_NGINX_TAG -f ./back-end/docker/nginx/Dockerfile ./back-end
-      
+
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $AWS_ECR_REPO:FE_$CODEBUILD_BUILD_NUMBER
       - docker push $AWS_ECR_REPO:BE_$CODEBUILD_BUILD_NUMBER
-      - docker push $AWS_ECR_REPO:$IMAGE_NGINX_TAG
