@@ -10,7 +10,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $AWS_ECR_REPO:FE_$CODEBUILD_BUILD_NUMBER -f ./front-end/Dockerfile ./front-end
+      - docker build -t $AWS_ECR_REPO:FE_$CODEBUILD_BUILD_NUMBER -f ./front-end/docker/react/Dockerfile ./front-end
       - docker build -t $AWS_ECR_REPO:BE_$CODEBUILD_BUILD_NUMBER -f ./back-end/docker/django/Dockerfile ./back-end
 
   post_build:
