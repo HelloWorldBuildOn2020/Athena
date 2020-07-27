@@ -9,4 +9,4 @@ files:
 hooks:
   ApplicationStart:
     - location: scripts/run-compose.sh
-    - runas: centos
+      runas: centos
