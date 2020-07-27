@@ -13,7 +13,7 @@ services:
       - athena
 
   front-end:
-    image: "192479299400.dkr.ecr.ap-southeast-2.amazonaws.com/athena:FE_$CODEBUILD_BUILD_NUMBER"
+    image: "192479299400.dkr.ecr.ap-southeast-2.amazonaws.com/athena:app_front_end"
     container_name: "athena-front-end-app"
     restart: always
     ports:
