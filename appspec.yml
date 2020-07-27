@@ -3,7 +3,7 @@ os: linux
 files:
     - source: docker-compose.deploy.yml
       destination: /home/centos/
-    - source: front-end/.env.example
+    - source: ./front-end/.env.example
       destination: /home/centos/.env
     
 hooks:
