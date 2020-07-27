@@ -1,0 +1,11 @@
+version: 0.0
+os: linux
+files:
+    - source: docker-compose.deploy.yml
+      destination: /home/centos/
+    - source: front-end/.env.example
+      destination: /home/centos/.env
+    
+hooks:
+  ApplicationStart:
+    - location: scripts/run-compose.sh
