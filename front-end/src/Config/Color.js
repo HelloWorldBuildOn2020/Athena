@@ -3,8 +3,8 @@ export default {
     primary: '#00B34B',
     white: '#FFFFFF',
     description: '#BDBDBD',
-    bgPrimary: '#FAFAFA',
-    bgSecondary: '#',
+    bgPrimary: '#D0E8F1',
+    bgSecondary: '#FAFAFA',
     red: '#FF4012',
     pink: '#FF80AB',
     purple: '#AB47BC',
@@ -12,5 +12,6 @@ export default {
     green: '#00B34B',
     yellow: '#FDD835',
     orange: '#FF9800',
-    brown: '#795548'
+    brown: '#795548',
+    black: '#000000'
   }
