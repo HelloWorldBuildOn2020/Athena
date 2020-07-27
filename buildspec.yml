@@ -17,3 +17,9 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $AWS_ECR_REPO:FE_$CODEBUILD_BUILD_NUMBER
+  
+  artifacts:
+    files:
+      - 'appspec.yml'
+      - 'scripts/run-compose.sh'
+      - 'docker-compose.deploy.yml'
