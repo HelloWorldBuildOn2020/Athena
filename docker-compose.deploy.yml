@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   nginx-front-end:
-    image: "athena-nginx-front-end:latest"
+    image: "192479299400.dkr.ecr.ap-southeast-2.amazonaws.com/athena:athena-nginx-front-end"
     container_name: "athena-nginx-front-end"
     restart: always
     ports:
@@ -13,7 +13,7 @@ services:
       - athena
 
   front-end:
-    image: "athena-front-end-app:latest"
+    image: "192479299400.dkr.ecr.ap-southeast-2.amazonaws.com/athena:FE_18"
     container_name: "athena-front-end-app"
     restart: always
     ports:
