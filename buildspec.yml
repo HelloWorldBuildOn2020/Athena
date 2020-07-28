@@ -23,4 +23,4 @@ artifacts:
     - 'appspec.yml'
     - 'scripts/*'
     - 'docker-compose.deploy.yml'
-  name: $CODEBUILD_BUILD_NUMBER
+  name: Athena-artifact
