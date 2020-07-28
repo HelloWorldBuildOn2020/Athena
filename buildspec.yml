@@ -10,10 +10,17 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $AWS_ECR_REPO:FE_$CODEBUILD_BUILD_NUMBER -f ./front-end/docker/react/Dockerfile ./front-end
+      - docker build -t $AWS_ECR_REPO:app_front_end -f ./front-end/docker/react/Dockerfile ./front-end
 
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push $AWS_ECR_REPO:FE_$CODEBUILD_BUILD_NUMBER
+      - docker push $AWS_ECR_REPO:app_front_end
+  
+artifacts:
+  files:
+    - 'appspec.yml'
+    - 'scripts/*'
+    - 'docker-compose.deploy.yml'
+  name: $CODEBUILD_BUILD_NUMBER
