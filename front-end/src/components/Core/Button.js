@@ -6,7 +6,7 @@ export const PrimaryButton = styled.button`
   color: ${color.white};
   border-radius: 4px;
   padding: 5px;
-  /* font-family: ProximaNova; */
+  font-family: 'Sarabun';
   background-color: ${props => props.color ? props.color : color.primary};
   border: solid 1px ${props => props.color ? props.color : color.primary};
   font-size: ${font.subtitle};
@@ -29,7 +29,7 @@ export const PrimaryButton = styled.button`
 export const SecondaryButton = styled.button`
   color: ${color.white};
   border-radius: 4px;
-  /* font-family: ProximaNova; */
+  font-family: 'Sarabun';
   background-color: ${props => props.color ? props.color : color.secondary};
   border: solid 1px ${props => props.color ? props.color : color.secondary};
   font-size: ${font.subtitle};
@@ -51,7 +51,7 @@ export const HomeButton = styled.button`
   color: ${color.white};
   border-radius: 50px;
   padding: 10px;
-  /* font-family: ProximaNova; */
+  font-family: 'Prompt';
   background-color: ${color.primary};
   border: solid 1px ${color.primary};
   font-size: ${font.h1};

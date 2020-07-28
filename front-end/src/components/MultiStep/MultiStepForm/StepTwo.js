@@ -1,5 +1,5 @@
 import React, { Fragment, useState} from 'react'
-import { FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap'
+import { FormGroup, Input, FormText, FormFeedback } from 'reactstrap'
 import { P2, Header } from '../../Core/Text'
 import color from '../../../Config/Color'
 import KBank from '../../../KBank.png'
@@ -54,7 +54,7 @@ const StepTwo = (props) => {
 			<img src={KBank} alt='OpenDurian Payment' style={{maxWidth: '350px', width: '100%'}}></img>
 			<FormGroup>
 				<br/>
-				<Label>จำนวนเงิน</Label>
+				<Header>จำนวนเงิน</Header>
 				<Input 
 					placeholder='จำนวนเงิน' 
 					onChange={(e)=> handleValidationMoney(e.target.value)}
@@ -64,7 +64,7 @@ const StepTwo = (props) => {
 				<P2 color={color.description}>ตามที่โอนจริง เช่น 1,000.13</P2>
 			</FormGroup>
 			<FormGroup>
-				<Label>วันที่โอน</Label>
+				<Header>วันที่โอน</Header>
 				<Input 
 					type='date'
 					placeholder='เช่น 19/07/2020'
@@ -75,7 +75,7 @@ const StepTwo = (props) => {
 				<P2 color={color.description}>เช่น 21/10/2018 (กรอกวันที่ตามสลิป ATM หรือใบฝาก ถ้ามี)</P2>
 			</FormGroup>
 			<FormGroup>
-				<Label>เวลาที่โอน</Label>
+				<Header>เวลาที่โอน</Header>
 				<Input
 					type='time'
 					placeholder='เช่น 22:58'
@@ -86,12 +86,12 @@ const StepTwo = (props) => {
 				<P2 color={color.description}>เช่น 15:45 (กรอกเวลาตามสลิป ATM หรือใบฝาก ถ้ามี)</P2>
 			</FormGroup>
 			<FormGroup>
-				<Label>สลิปหลักฐานการโอน</Label>
+				<Header>สลิปหลักฐานการโอน</Header>
 				<br/>
 				<Input type='file'/>
-				<FormText color='muted'>
+				<P2 color={color.description}>
 					ไฟล์ขนาดไม่เกิน 2MB นามสกุล .jpg .png .gif
-				</FormText>
+				</P2>
 			</FormGroup>
 			<br/>
 		</Fragment>
