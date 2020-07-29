@@ -1,13 +1,11 @@
-import React, { Fragment } from 'react';
-import './App.css'
-import MultiStep from './components/MultiStep'
+import React from 'react';
+import './App.css';
+import Home from './components/MultiStep'
 
 function App() {
   return (
-    <Fragment>
-      <MultiStep/>
-    </Fragment>
-  )
+    <Home/>
+  );
 }
 
 export default App
