@@ -5,7 +5,7 @@ import MultiStep from './components/MultiStep'
 function App() {
   return (
     <Fragment>
-      <MultiStep></MultiStep>
+      <MultiStep/>
     </Fragment>
   )
 }
