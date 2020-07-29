@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  parameter-store:
+    ENV_FILE: "ENV_FILE"
+
 phases:
   pre_build:
     commands:
