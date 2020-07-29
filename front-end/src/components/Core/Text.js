@@ -3,7 +3,7 @@ import size from '../../Config/FontSize'
 import color from '../../Config/Color'
 
 export const Title = styled.h3`
-  /* font-family: ProximaNova; */
+  font-family: 'Sarabun';
   font-size: ${size.title};
   color: ${props => props.color};
   font-weight: ${props => props.weight || 'bold'};
@@ -13,7 +13,7 @@ export const Title = styled.h3`
 `
 
 export const SubTitle = styled.p`
-  /* font-family: ProximaNova; */
+  font-family: 'Sarabun';
   color: ${props => props.color || color.headTitle};
   font-size: ${size.subtitle};
   font-weight: ${props => props.weight || 'bold'};
@@ -23,7 +23,7 @@ export const SubTitle = styled.p`
 `
 
 export const Header = styled.p`
-  /* font-family: ProximaNova; */
+  font-family: 'Sarabun';
   color: ${props => props.color};
   font-size: ${size.header};
   font-weight: ${props => props.weight || 'bold'};
@@ -33,6 +33,7 @@ export const Header = styled.p`
 `
 
 export const P = styled.p`
+  font-family: 'Sarabun';
   font-size: ${size.p1};
   color: ${props => props.color};
   @media screen and (min-width: 320px) and (max-width: 768px) {
@@ -43,6 +44,6 @@ export const P = styled.p`
 export const P2 = styled.p`
   font-size: ${size.description};
   color: ${props => props.color};
-  /* font-family: ProximaNova; */
+  font-family: 'Sarabun';
 `
 
