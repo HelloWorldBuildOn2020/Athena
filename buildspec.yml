@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   parameter-store:
-    ENV_FILE: "ENV_FILE"
+    ENV_FILE: "REACT_APP_API"
 
 phases:
   pre_build:
