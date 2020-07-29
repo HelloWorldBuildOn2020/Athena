@@ -11,6 +11,7 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t $AWS_ECR_REPO:app_front_end -f ./front-end/docker/react/Dockerfile ./front-end
+      - echo $ENV_FILE > .env
 
   post_build:
     commands:
@@ -23,4 +24,5 @@ artifacts:
     - 'appspec.yml'
     - 'scripts/*'
     - 'docker-compose.deploy.yml'
+    - '.env'
   name: Athena-artifact
