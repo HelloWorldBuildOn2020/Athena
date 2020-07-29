@@ -14,30 +14,34 @@ $ docker-compose up
 #### Manual Start
 ##### Back-end
 
-1. Start MariaDB database via docker-compose
+1. Copy env example
 ```bash
-docker-compose up db -d
-```
-
-2. Change environment
-```bash
-pipenv shell
-```
-3. Copy env example
-```bash
-cd back-end
-cp env.example .env
+cp back-end/.env.example back-end/.env
 ```
 > Don't forget update env variables
 
-4. Install dependency in requirements.txt
+2. Start MariaDB database via docker-compose
+```bash
+docker-compose up -d db
+```
+
+3. Change environment
 ```bash
 cd back-end
+pipenv shell
+```
+
+4. Install dependency in requirements.txt
+```bash
 pip install -r requirements.txt
 ```
 
-> Note
-  For the first time run `python manage.py makemigrations` and `python manage.py migrate`
+> **Note**
+  For the first time run 
+  ```bash
+  python manage.py makemigrations
+  python manage.py migrate
+```
 
 5. Start server
 ```bash
