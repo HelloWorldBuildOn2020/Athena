@@ -3,6 +3,8 @@ os: linux
 files:
     - source: docker-compose.deploy.yml
       destination: /home/centos/
+    - source: .env
+      destination: /home/centos/
     
 hooks:
   ApplicationStart:
