@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import { FormGroup, Input, FormFeedback } from "reactstrap";
+import { FormGroup, Input, FormFeedback, Button } from "reactstrap";
 import { P2, Header } from "../../Core/Text";
 import color from "../../../Config/Color";
 import KBank from "../../../KBank.png";
+import styled from "styled-components";
+import apiServices from '../../../services/apiVerifySlip'
+
+const ButtonStyle = styled(Button)`
+  background-color: ${color.blue};
+  width: 100%;
+  border: 0px;
+`;
 
 const messageEmptyMoney = "กรุณากรอกจำนวนเงิน";
 const messageEmptyDate = "กรุณากรอกวันที่โอน";
@@ -15,6 +23,10 @@ const StepTwo = (props) => {
   const [messageErrorMoney, setMessageErrorMoney] = useState(false);
   const [messageErrorDate, setMessageErrorDate] = useState(false);
   const [messageErrorTime, setMessageErrorTime] = useState(false);
+  const [slip, setSlip] = useState('')
+  const [money, setMoney] = useState(null)
+  const [date, setDate] = useState('')
+  const [time, setTime] = useState('')
 
   const handleValidationMoney = (value) => {
     if (value === "") {
@@ -22,6 +34,7 @@ const StepTwo = (props) => {
       setMessageErrorMoney(messageEmptyMoney);
     } else {
       setInvalidMoney(false);
+      setMoney(value)
     }
   };
 
@@ -31,6 +44,7 @@ const StepTwo = (props) => {
       setMessageErrorDate(messageEmptyDate);
     } else {
       setInvalidDate(false);
+      setDate(value)
     }
   };
 
@@ -40,8 +54,21 @@ const StepTwo = (props) => {
       setMessageErrorTime(messageEmptyTime);
     } else {
       setInvalidTime(false);
+      setTime(value)
     }
   };
+
+  const handleSubmit = async () => {
+    let data = {
+      "money": money,
+      "date": date,
+      "time": time
+    }
+    props.handleFinish()
+    await apiServices.verifySlip(slip, data).then((response) => {
+      props.setLoading(false)
+    })
+  }
 
   return (
     <div className="row d-flex justify-content-center">
@@ -54,7 +81,7 @@ const StepTwo = (props) => {
         </Header>
         <Header> แจ้งโอน </Header>
         <P2 color={color.black}>
-        เมื่อโอนเงินเรียบร้อยแล้ว โปรดแจ้งการชำระเงินโดยกรอกแบบฟอร์มด้านล่าง
+          เมื่อโอนเงินเรียบร้อยแล้ว โปรดแจ้งการชำระเงินโดยกรอกแบบฟอร์มด้านล่าง
         </P2>
         <Header> เลือกบัญชี </Header>
         <img
@@ -101,11 +128,12 @@ const StepTwo = (props) => {
         </FormGroup>
         <FormGroup>
           <Header>สลิปหลักฐานการโอน</Header>
-          <Input type="file" />
+          <Input type="file" onChange={(e) => setSlip(e.target.files[0])} />
           <P2 color={color.description}>
             ไฟล์ขนาดไม่เกิน 2MB นามสกุล .jpg .png .gif
           </P2>
         </FormGroup>
+        <ButtonStyle onClick={handleSubmit}>แจ้งโอน</ButtonStyle>
         <br />
       </div>
     </div>
