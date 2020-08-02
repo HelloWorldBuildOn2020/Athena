@@ -1,26 +1,30 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import StepOne from './StepOne'
-import StepTwo from './StepTwo'
-import StepThree from './StepThree'
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Stepper,
+  Step,
+  StepButton,
+  Button,
+  Box
+} from "@material-ui/core";
+import StepOne from "./StepOne";
+import StepTwo from "./StepTwo";
+import StepThree from "./StepThree";
+import color from "../../../Config/Color";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: "100%"
   },
   button: {
     marginRight: theme.spacing(1),
+    backgroundColor: color.primary
   },
   backButton: {
     marginRight: theme.spacing(1),
   },
   completed: {
-    display: 'inline-block',
+    display: "inline-block",
   },
   instructions: {
     marginTop: theme.spacing(1),
@@ -29,41 +33,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['รายละเอียดการซื้อและจัดส่ง','ชำระเงิน', 'แจ้งโอนและรอตรวจสอบ'];
-}
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <StepOne/>;
-    case 1:
-      return <StepTwo/>;
-    case 2:
-      return <StepThree/>;
-    default:
-      return 'Unknown step';
-  }
+  return ["รายละเอียดการซื้อและจัดส่ง", "ชำระเงิน", "แจ้งโอนและรอตรวจสอบ"];
 }
 
 export default function HorizontalNonLinearAlternativeLabelStepper() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+  const [loading, setLoading] = useState(false)
   const steps = getSteps();
-
-  const totalSteps = () => {
-    return getSteps().length;
-  };
-
-  const isLastStep = () => {
-    return activeStep === totalSteps() - 1;
-  };
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1)
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleStep = (step) => () => {
@@ -71,7 +51,21 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
   };
 
   const handleFinish = () => {
-    setActiveStep(2);
+    setLoading(true)
+    setActiveStep(2)
+  };
+
+  const getStepContent = (step) => {
+    switch (step) {
+      case 0:
+        return <StepOne />;
+      case 1:
+        return <StepTwo handleFinish={handleFinish} setLoading={() => setLoading(loading)}/>;
+      case 2:
+        return <StepThree loading={loading}/>;
+      default:
+        return "Unknown step";
+    }
   };
 
   return (
@@ -82,10 +76,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
           const buttonProps = {};
           return (
             <Step key={label} {...stepProps}>
-              <StepButton
-                onClick={handleStep(index)}
-                {...buttonProps}
-              >
+              <StepButton onClick={handleStep(index)} {...buttonProps}>
                 {label}
               </StepButton>
             </Step>
@@ -94,30 +85,37 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
       </Stepper>
       <div>
         {activeStep === steps.length - 2 ? (
-          <div>
-						<Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-						<Button onClick={handleFinish} variant="contained" color="primary">แจ้งโอน</Button>
-          </div>
+          <>
+            <div className={classes.instructions}>
+              {getStepContent(activeStep)}
+            </div>
+          </>
         ) : (
-          <div>
-					{activeStep === 2 ? (
-						<Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-					) : (
-						<div>
-							<Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-							<div>
-								<Button
-									variant="contained"
-									color="primary"
-									onClick={handleNext}
-									className={classes.button}
-								>
-									ขั้นตอนถัดไป
-								</Button>
-							</div>
-						</div>
-					)}  
-          </div>
+          <>
+            {activeStep === 2 ? (
+              <div className={classes.instructions}>
+                {getStepContent(activeStep)}
+              </div>
+            ) : (
+              <>
+                <div className={classes.instructions}>
+                  {getStepContent(activeStep)}
+                </div>
+                <Box display="flex" flexDirection="row-reverse">
+                  <Box alignItems="flex-end">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleNext}
+                      className={classes.button}
+                    >
+                      ขั้นตอนถัดไป
+                    </Button>
+                  </Box>
+                </Box>
+              </>
+            )}
+          </>
         )}
       </div>
     </div>

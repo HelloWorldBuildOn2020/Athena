@@ -1,29 +1,37 @@
 import React from "react";
-import { Progress } from "reactstrap";
 import { P2, Header } from "../../Core/Text";
 import color from "../../../Config/Color";
-import ModalStatusSuccess from "../../MultiStep/ModalStatus/ModalStatusSuccess";
-import ModalStatusFail from "../../MultiStep/ModalStatus/ModalStatusFail";
+import { CircularProgress } from "@material-ui/core";
 
 const StepThree = (props) => {
   return (
     <div className="row d-flex justify-content-center">
       <div className="col-6">
         <br />
-        <Header className="text-center">กำลังตรวจสอบ</Header>
-        <Progress value="60">60%</Progress>
-        <P2 className="text-center" color={color.description}>
-          ระบบกำลังทำการตรวจสอบข้อมูล กรุณารอสักครู่...
-        </P2>
-        <br />
-        <ModalStatusSuccess
-          icon="fa fa-check-circle-o fa-4x"
-          buttonLabel="Test Modal Status Success"
-        />
-        <ModalStatusFail
-          icon="fa fa-times-circle-o fa-4x"
-          buttonLabel="Test Modal Status Fail"
-        />
+        {props.loading ?
+          <div className="row d-flex justify-content-center">
+            <Header className="text-center">
+              กำลังตรวจสอบ
+              <br/>
+              <br/>
+              <CircularProgress />
+            </Header>
+          </div> :
+          <>
+            <Header color={color.primary} className="text-center">
+              ยืนยันการตรวจสอบเรียบร้อย
+            </Header>
+            <div className="text-center">
+              <Header
+                className="fa fa-check-circle-o fa-4x"
+                color={color.primary}
+              ></Header>
+            </div>
+            <P2 color={color.primary} className="text-center">
+              คุณสามารถเข้าเรียนได้ทันที
+            </P2>
+          </>
+        }
         <br />
       </div>
     </div>

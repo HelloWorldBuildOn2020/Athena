@@ -1,5 +1,4 @@
 import axios from "axios";
-import Cookie from "js-cookie";
 
 const createInstance = (headers) => {
   return axios.create({
