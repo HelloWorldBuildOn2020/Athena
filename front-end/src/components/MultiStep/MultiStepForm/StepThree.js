@@ -8,7 +8,7 @@ const StepThree = (props) => {
   const [headerMessage, setHeaderMessage] = useState('')
   const [message, setMessage] = useState('')
   const [color, setColor] = useState('')
-  const [icon, setIcon] = useState("fa fa-check-circle-o fa-4x")
+  const [icon, setIcon] = useState("")
 
   useEffect(() => {
     checkStatus()
@@ -17,10 +17,11 @@ const StepThree = (props) => {
   const checkStatus = () => {
     let colorText = colors.primary
     if(statusCode == 200) {
-      setIcon(icon)
+      setIcon("fa fa-check-circle-o fa-4x");
       setHeaderMessage("ยืนยันการตรวจสอบเรียบร้อย");
       setMessage("คุณสามารถเข้าเรียนได้ทันที");
     } else if(statusCode == 400) {
+      setIcon("");
       setHeaderMessage("ไม่สามาตรวจสอบข้อมูลได้")
       setMessage("กรุณารอเจ้าหน้าที่ตรวจสอบอีกครั้งภายใน 48 ชั่วโมง")
       colorText = colors.red;
