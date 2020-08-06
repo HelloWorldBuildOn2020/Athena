@@ -1,30 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { P2, Header } from "../../Core/Text";
-import color from "../../../Config/Color";
+import colors from "../../../Config/Color";
 import { CircularProgress } from "@material-ui/core";
 
 const StepThree = (props) => {
   const { statusCode, loading } = props
   const [headerMessage, setHeaderMessage] = useState('')
   const [message, setMessage] = useState('')
+  const [color, setColor] = useState('')
+  const [icon, setIcon] = useState("fa fa-check-circle-o fa-4x")
 
   useEffect(() => {
     checkStatus()
   }, [statusCode])
 
   const checkStatus = () => {
+    let colorText = colors.primary
     if(statusCode == 200) {
+      setIcon(icon)
       setHeaderMessage("ยืนยันการตรวจสอบเรียบร้อย");
       setMessage("คุณสามารถเข้าเรียนได้ทันที");
     } else if(statusCode == 400) {
       setHeaderMessage("ไม่สามาตรวจสอบข้อมูลได้")
       setMessage("กรุณารอเจ้าหน้าที่ตรวจสอบอีกครั้งภายใน 48 ชั่วโมง")
+      colorText = colors.red;
     } else {
+      setIcon("");
       setHeaderMessage("เกิดข้อผิดพลาด");
       setMessage("กรุณากรอกใหม่อีกครั้ง");
+      colorText = colors.red;
     }
+    setColor(colorText)
   }
-
+  
   return (
     <div className="row d-flex justify-content-center">
       <div className="col-6">
@@ -39,16 +47,16 @@ const StepThree = (props) => {
             </Header>
           </div> :
           <>
-            <Header color={color.primary} className="text-center">
+            <Header color={color} className="text-center">
               {headerMessage}
             </Header>
             <div className="text-center">
               <Header
-                className="fa fa-check-circle-o fa-4x"
-                color={color.primary}
-              ></Header>
+                className={icon}
+                color={color}
+                ></Header>
             </div>
-            <P2 color={color.primary} className="text-center">
+            <P2 color={color} className="text-center">
               {message}
             </P2>
           </>
