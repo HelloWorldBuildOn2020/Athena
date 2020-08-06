@@ -32,7 +32,7 @@ const StepThree = (props) => {
     }
     setColor(colorText)
   }
-  
+
   return (
     <div className="row d-flex justify-content-center">
       <div className="col-6">
