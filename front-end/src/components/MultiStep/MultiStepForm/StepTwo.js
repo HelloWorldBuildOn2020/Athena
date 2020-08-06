@@ -4,7 +4,6 @@ import { P2, Header } from "../../Core/Text";
 import color from "../../../Config/Color";
 import KBank from "../../../KBank.png";
 import styled from "styled-components";
-import apiServices from '../../../services/apiVerifySlip'
 
 const ButtonStyle = styled(Button)`
   background-color: ${color.blue};
@@ -17,6 +16,7 @@ const messageEmptyDate = "กรุณากรอกวันที่โอน
 const messageEmptyTime = "กรุณากรอกเวลาที่โอน";
 
 const StepTwo = (props) => {
+  const { handleSubmit } = props
   const [invalidMoney, setInvalidMoney] = useState(false);
   const [invalidDate, setInvalidDate] = useState(false);
   const [invalidTime, setInvalidTime] = useState(false);
@@ -44,7 +44,7 @@ const StepTwo = (props) => {
       setMessageErrorDate(messageEmptyDate);
     } else {
       setInvalidDate(false);
-      setDate(value)
+      setDate(value.replace(/-/g, ""))
     }
   };
 
@@ -58,26 +58,26 @@ const StepTwo = (props) => {
     }
   };
 
-  const handleSubmit = async () => {
+  const onSubmit = async () => {
     let data = {
       "money": money,
       "date": date,
       "time": time
     }
-    props.handleFinish()
-    await apiServices.verifySlip(slip, data).then((response) => {
-      props.setLoading(false)
-    })
+    handleSubmit(slip, data)
   }
 
   return (
     <div className="row d-flex justify-content-center">
       <div className="col-6">
         <br />
-        <Header className="text-center"> ชำระเงิน โอนผ่าน ATM </Header>
+        <Header className="text-center">
+          ชำระเงิน โอนผ่าน App ธนาคาร หรือ โอนผ่าน ATM
+          <br />
+          (Payment via Mobile Banking or ATM)
+        </Header>
         <Header className="text-success text-center">
-          {" "}
-          ยอดที่ต้องชำระ 1,000 บาท{" "}
+          ยอดที่ต้องชำระ 764 บาท
         </Header>
         <Header> แจ้งโอน </Header>
         <P2 color={color.black}>
@@ -91,7 +91,7 @@ const StepTwo = (props) => {
         ></img>
         <FormGroup>
           <br />
-          <Header>จำนวนเงิน</Header>
+          <Header>จำนวนเงิน (Amount of money transfer)</Header>
           <Input
             placeholder="จำนวนเงิน"
             onChange={(e) => handleValidationMoney(e.target.value)}
@@ -101,7 +101,7 @@ const StepTwo = (props) => {
           <P2 color={color.description}>ตามที่โอนจริง เช่น 1,000.13</P2>
         </FormGroup>
         <FormGroup>
-          <Header>วันที่โอน</Header>
+          <Header>วันที่โอน (Date of transfer)</Header>
           <Input
             type="date"
             placeholder="เช่น 19/07/2020"
@@ -114,7 +114,7 @@ const StepTwo = (props) => {
           </P2>
         </FormGroup>
         <FormGroup>
-          <Header>เวลาที่โอน</Header>
+          <Header>เวลาที่โอน (Time of transfer)</Header>
           <Input
             type="time"
             placeholder="เช่น 22:58"
@@ -127,13 +127,13 @@ const StepTwo = (props) => {
           </P2>
         </FormGroup>
         <FormGroup>
-          <Header>สลิปหลักฐานการโอน</Header>
+          <Header>สลิปหลักฐานการโอน (Upload Slip)</Header>
           <Input type="file" onChange={(e) => setSlip(e.target.files[0])} />
           <P2 color={color.description}>
             ไฟล์ขนาดไม่เกิน 2MB นามสกุล .jpg .png .gif
           </P2>
         </FormGroup>
-        <ButtonStyle onClick={handleSubmit}>แจ้งโอน</ButtonStyle>
+        <ButtonStyle onClick={onSubmit}>แจ้งโอน</ButtonStyle>
         <br />
       </div>
     </div>

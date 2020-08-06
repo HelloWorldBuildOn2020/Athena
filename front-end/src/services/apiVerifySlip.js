@@ -1,21 +1,17 @@
 import axios from 'axios';
-
+import api from '../utils/api'
 
 const APIVerifySlip = {
   verifySlip: async (slip, data) => {
-    var config = {
-      method: "post",
-      url: `${process.env.REACT_APP_API}upload-slip?amount=${data.money}&date=${data.date}&time=${data.time}`,
-      headers: {
-        "Content-Type": "image/jpeg",
-      },
-      data: slip,
+    const header = {
+      "Content-Type": "image/jpeg",
+      "Accept": "*"
     };
-    let response = axios(config).then(function (response) {
-      console.log(JSON.stringify("Verify Successful."));
-    }).catch(function (error) {
-      console.log(error);
-    });
+    let response =  api.post(
+      `/upload-slip?amount=${data.money}&date=${data.date}&time=${data.time}`,
+      slip,
+      header
+    );
     return response;
   }
 };

@@ -11,6 +11,7 @@ import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
 import StepThree from "./StepThree";
 import color from "../../../Config/Color";
+import apiServices from "../../../services/apiVerifySlip";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,6 +41,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const [loading, setLoading] = useState(false)
+  const [response,  setResponse] = useState({})
   const steps = getSteps();
 
   const handleNext = () => {
@@ -55,14 +57,33 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
     setActiveStep(2)
   };
 
+  const handleSubmit = async (slip, data) => {
+    handleFinish();
+    try {
+      await apiServices.verifySlip(slip, data).then((data) => {
+        setResponse(data)
+        setLoading(false);
+      })
+    } catch (error) {
+      setResponse(error.response)
+      setLoading(false);
+    }
+  };
+
   const getStepContent = (step) => {
     switch (step) {
       case 0:
         return <StepOne />;
       case 1:
-        return <StepTwo handleFinish={handleFinish} setLoading={() => setLoading(loading)}/>;
+        return (
+          <StepTwo
+            handleFinish={handleFinish}
+            setLoading={() => setLoading(loading)}
+            handleSubmit={handleSubmit}
+          />
+        );
       case 2:
-        return <StepThree loading={loading}/>;
+        return <StepThree loading={loading} statusCode={response.status}/>;
       default:
         return "Unknown step";
     }
