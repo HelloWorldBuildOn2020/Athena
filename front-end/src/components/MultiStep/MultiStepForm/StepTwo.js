@@ -116,7 +116,6 @@ const StepTwo = (props) => {
         <FormGroup>
           <Header>เวลาที่โอน (Time of transfer)</Header>
           <Input
-            type="time"
             placeholder="เช่น 22:58"
             onChange={(e) => handleValidationTime(e.target.value)}
             invalid={invalidTime}
