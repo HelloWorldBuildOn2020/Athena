@@ -2,18 +2,15 @@ import axios from "axios";
 
 const createInstance = (headers) => {
   return axios.create({
-    baseURL: process.env.REACT_APP_URL_API,
-    headers: {
-      Authorization: `Bearer ${Cookie.get("token")}`,
-      "Content-Type": "application/json",
-    },
+    baseURL: process.env.REACT_APP_API,
+    headers: headers,
   });
 };
 
 const handleResponse = (res) =>
   !res.data.error ? Promise.resolve(res) : Promise.reject(new Error(res));
 
-const catchError = (err) => Promise.reject(err.message);
+const catchError = (err) => Promise.reject(err);
 
 export default {
   get: (path, headers = {}) =>
