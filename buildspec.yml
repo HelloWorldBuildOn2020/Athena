@@ -23,7 +23,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $AWS_ECR_REPO:app_front_end
-      - docker puhs $AWS_ECR_REPO:athena-nginx-front-end
+      - docker push $AWS_ECR_REPO:athena-nginx-front-end
   
 artifacts:
   files:
