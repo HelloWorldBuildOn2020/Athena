@@ -10,4 +10,6 @@ RUN yarn install
 COPY src $APPLICATION_ROOT/src
 COPY public $APPLICATION_ROOT/public
 
-CMD ["yarn","start"]
+COPY .env $APPLICATION_ROOT/
+
+RUN yarn build
