@@ -7,6 +7,8 @@ services:
     restart: always
     ports:
       - 80:80
+    volumes:
+      - build:/var/www/build
     depends_on:
       - front-end
     networks:
@@ -15,14 +17,15 @@ services:
   front-end:
     image: "192479299400.dkr.ecr.ap-southeast-2.amazonaws.com/athena:app_front_end"
     container_name: "athena-front-end-app"
-    restart: always
-    ports:
-      - 3000:3000                           
-    stdin_open: true
+    volumes:
+      - build:/app/build
+    environment:
+      - NODE_ENV=development
     networks:
       - athena
-    env_file:
-      - /home/centos/.env
+
+volumes:
+  build:
 
 networks:
   athena:
