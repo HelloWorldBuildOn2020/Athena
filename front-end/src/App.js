@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import Home from './components/MultiStep'
+import Athena from './components/Athena'
 
 function App() {
   return (
-    <Home/>
+    <Athena/>
   );
 }
 
