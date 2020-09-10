@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Layout } from "antd";
-import { Title, P } from "../Core/Text";
+import React from "react";
+import { Layout, Col, Row } from "antd";
+import { Title } from "../Core/Text";
 import Transaction from "./Transaction";
-import TransactionDetail from "./TransactionDetail";
+import User from "../Core/User";
 
 const Overview = (props) => {
   const { Header } = Layout;
@@ -10,14 +10,14 @@ const Overview = (props) => {
   return (
     <div>
       <Header className="site-layout-background" style={{ padding: 0 }}>
-        <Title style={{ padding: 16, margin: "0 16px" }}>Overview</Title>
+        <Row>
+          <Col>
+            <Title style={{ padding: 16, margin: "0 16px" }}>Overview</Title>
+          </Col>
+          <User />
+        </Row>
       </Header>
-      <div
-        className="site-layout-background"
-        style={{ padding: 24, minHeight: "100vh", margin: "16px 16px" }}
-      >
-        <Transaction />
-      </div>
+      <Transaction />
     </div>
   );
 };

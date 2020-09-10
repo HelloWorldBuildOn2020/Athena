@@ -1,6 +1,7 @@
 import React from "react";
-import { Layout } from "antd";
+import { Layout, Col, Row } from "antd";
 import { Title } from "../Core/Text";
+import User from "../Core/User";
 
 const EmailSub = (props) => {
   const { Header } = Layout;
@@ -8,7 +9,14 @@ const EmailSub = (props) => {
   return (
     <div>
       <Header className="site-layout-background" style={{ padding: 0 }}>
-        <Title style={{ padding: 16, margin: "0 16px" }}>Email Subscription</Title>
+        <Row>
+          <Col>
+            <Title style={{ padding: 16, margin: "0 16px" }}>
+              Email Subscription
+            </Title>
+          </Col>
+          <User />
+        </Row>
       </Header>
       <div
         className="site-layout-background"
