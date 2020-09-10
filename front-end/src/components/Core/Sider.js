@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import { PieChartOutlined, IdcardOutlined, SettingOutlined } from "@ant-design/icons";
-import Overview from "../Athena/Overview/Overview";
-import Analytics from "../Athena/Analytics";
-import EmailSub from "../Athena/EmailSub";
+import Overview from "../Overview";
+import Analytics from "../Analytics";
+import EmailSub from "../EmailSub";
 import Logo from "../../athenalogo.png"
 
 const Sider = () => {
