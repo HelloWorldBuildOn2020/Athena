@@ -49,10 +49,17 @@ const Transaction = (props) => {
   return (
     <div>
       {showTransactionDetail ? (
-        <>
+        <div
+          className="site-layout-background"
+          style={{ padding: 24, minHeight: "100vh", margin: "16px 16px" }}
+        >
           <SubTitle>Transactions</SubTitle>{" "}
-          <Table dataSource={dataTransactions} columns={columns} />
-        </>
+          <Table
+            dataSource={dataTransactions}
+            columns={columns}
+            pagination={{ defaultPageSize: 10 }}
+          />
+        </div>
       ) : (
         <TransactionDetail />
       )}
