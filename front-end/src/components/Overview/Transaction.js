@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Table, Space, Button } from "antd";
+import { Table, Space, Button, Layout } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
-import { SubTitle } from "../Core/Text";
 import TransactionDetail from "./TransactionDetail";
 import { dataTransactions } from "../../utils/mock";
 
 const Transaction = (props) => {
+  const { Content } = Layout;
   const columns = [
     {
       title: "Charges",
@@ -47,13 +47,9 @@ const Transaction = (props) => {
   };
 
   return (
-    <div>
+    <>
       {showTransactionDetail ? (
-        <div
-          className="site-layout-background"
-          style={{ padding: 24, minHeight: "100vh", margin: "16px 16px" }}
-        >
-          <SubTitle>Transactions</SubTitle>{" "}
+        <div>
           <Table
             dataSource={dataTransactions}
             columns={columns}
@@ -63,7 +59,7 @@ const Transaction = (props) => {
       ) : (
         <TransactionDetail />
       )}
-    </div>
+    </>
   );
 };
 
