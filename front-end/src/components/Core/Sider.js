@@ -12,7 +12,7 @@ const Sider = () => {
   const { SubMenu } = Menu;
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: '100vh' }}>
       <Sider>
         <div className="logo">
           <img src={Logo} style={{ padding: 5, margin: '16px 0' }}/>
@@ -38,7 +38,7 @@ const Sider = () => {
           <Route exact path="/Analytics" component={Analytics} />
           <Route exact path="/EmailSub" component={EmailSub} />
         </Content>
-        <Footer style={{ textAlign: "center" }}>
+        <Footer style={{ textAlign: 'center' }}>
           Athena of Build On Thailand ©2020 Created by HelloWorld
         </Footer>
       </Layout>
