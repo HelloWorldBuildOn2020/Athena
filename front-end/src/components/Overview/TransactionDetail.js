@@ -42,7 +42,7 @@ const Overview = (props) => {
       </div>
       <div
         className="site-layout-background"
-        style={{ padding: 24, margin: "16px 16px" }}
+        style={{ padding: 24, margin: '16px 16px' }}
       >
         <SubTitle>Transaction Detail</SubTitle>{" "}
         <Table
@@ -53,14 +53,14 @@ const Overview = (props) => {
       </div>
       <div
         className="site-layout-background"
-        style={{ padding: 24, margin: "16px 16px" }}
+        style={{ padding: 24, margin: '16px 16px' }}
       >
         <Row>
           <SubTitle>Payment Information</SubTitle>
         </Row>
         <Row>
           <Col span={12}>
-            <div style={{ margin: "16px 16px" }}>
+            <div style={{ margin: '6px 16px' }}>
               <Descriptions bordered>
                 <Descriptions.Item label="Name" span={3}>
                   Jirattikarn Vilairat
