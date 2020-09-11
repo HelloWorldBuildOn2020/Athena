@@ -20,23 +20,23 @@ const Sider = () => {
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           <Menu.Item key="1" icon={<PieChartOutlined />}>
             <span>Overview</span>
-            <Link to="/Overview" />
+            <Link to="/" />
           </Menu.Item>
           <Menu.Item key="2" icon={<IdcardOutlined />}>
             Email Subscription
-            <Link to="/EmailSub" />
+            <Link to="/emailSub" />
           </Menu.Item>
           <Menu.Item key="3" icon={<SettingOutlined />}>
             Analytics
-            <Link to="/Analytics" />
+            <Link to="/analytics" />
           </Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">
         <Content>
-          <Route exact path="/Overview" component={Overview} />
-          <Route exact path="/Analytics" component={Analytics} />
-          <Route exact path="/EmailSub" component={EmailSub} />
+          <Route exact path="/" component={Overview} />
+          <Route exact path="/analytics" component={Analytics} />
+          <Route exact path="/emailSub" component={EmailSub} />
         </Content>
         <Footer style={{ textAlign: 'center' }}>
           Athena of Build On Thailand ©2020 Created by HelloWorld
