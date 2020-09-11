@@ -15,7 +15,7 @@ const Sider = () => {
     <Layout style={{ minHeight: "100vh" }}>
       <Sider>
         <div className="logo">
-          <img src={Logo} style={{ padding: 5, margin: "16px 0" }}/>
+          <img src={Logo} style={{ padding: 5, margin: '16px 0' }}/>
         </div>
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           <Menu.Item key="1" icon={<PieChartOutlined />}>
