@@ -1,7 +1,5 @@
 import React from "react";
-import { Layout, Table, Row, Col, Descriptions, Breadcrumb } from "antd";
-import { dataTransactionsDetail } from "../../utils/mock";
-import { SubTitle } from "../Core/Text";
+import { Layout, Row, Col, Descriptions, Breadcrumb } from "antd";
 import Slip from "../../slip.jpg";
 
 const Overview = (props) => {
@@ -31,37 +29,33 @@ const Overview = (props) => {
   ];
 
   return (
-    <div>
-      <div style={{ padding: 16 }}>
+    <>
+      <div>
         <Breadcrumb>
           <Breadcrumb.Item>
-            <a href="/Overview">Overview</a>
+            <a href="/">Overview</a>
           </Breadcrumb.Item>
           <Breadcrumb.Item>Transaction Detail</Breadcrumb.Item>
         </Breadcrumb>
       </div>
-      <div
-        className="site-layout-background"
-        style={{ padding: 24, margin: '16px 16px' }}
-      >
-        <SubTitle>Transaction Detail</SubTitle>{" "}
-        <Table
-          dataSource={dataTransactionsDetail}
-          columns={columns}
-          pagination={{ hideOnSinglePage: true }}
-        />
-      </div>
-      <div
-        className="site-layout-background"
-        style={{ padding: 24, margin: '16px 16px' }}
-      >
-        <Row>
-          <SubTitle>Payment Information</SubTitle>
-        </Row>
+      <br />
+      <div>
         <Row>
           <Col span={12}>
-            <div style={{ margin: '6px 16px' }}>
+            <div>
               <Descriptions bordered>
+                <Descriptions.Item label="Verification Code" span={3}>
+                  tran_id0001
+                </Descriptions.Item>
+                <Descriptions.Item label="Verify Status" span={3}>
+                  Successful
+                </Descriptions.Item>
+                <Descriptions.Item label="Charges" span={3}>
+                  $4500
+                </Descriptions.Item>
+                <Descriptions.Item label="Date" span={3}>
+                  July 22, 2020 22:22
+                </Descriptions.Item>
                 <Descriptions.Item label="Name" span={3}>
                   Jirattikarn Vilairat
                 </Descriptions.Item>
@@ -82,7 +76,7 @@ const Overview = (props) => {
           </Col>
         </Row>
       </div>
-    </div>
+    </>
   );
 };
 
