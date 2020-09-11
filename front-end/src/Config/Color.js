@@ -1,10 +1,8 @@
 export default {
-    secondary: '#40D38D',
-    primary: '#00B34B',
+    secondary: '#F4F6FC',
+    primary: '#162447',
     white: '#FFFFFF',
     description: '#BDBDBD',
-    bgPrimary: '#D0E8F1',
-    bgSecondary: '#FAFAFA',
     red: '#FF4012',
     pink: '#FF80AB',
     purple: '#AB47BC',
