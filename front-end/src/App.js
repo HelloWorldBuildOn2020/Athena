@@ -4,7 +4,7 @@ import Athena from './components/Core/Sider'
 
 function App() {
   return (
-    <Athena/>
+    <Athena />
   );
 }
 
