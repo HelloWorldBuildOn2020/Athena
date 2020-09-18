@@ -1,4 +1,5 @@
 export default {
+    h0: '35px',
     h1: '24px',
     title: '20px',
     subtitle: '16px',
