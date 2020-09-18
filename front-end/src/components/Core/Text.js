@@ -47,3 +47,13 @@ export const P2 = styled.p`
   font-family: 'Sarabun';
 `
 
+export const CardContent = styled.h1`
+  font-family: 'Sarabun';
+  color: ${props => props.color || color.headTitle};
+  font-size: ${size.h0};
+  font-weight: ${props => props.weight || 'bold'};
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    font-size: ${size.header};
+  }
+  margin: 40px;
+`

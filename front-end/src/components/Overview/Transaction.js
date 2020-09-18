@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Table, Space, Button, Layout } from "antd";
+import { Table, Space, Button } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import TransactionDetail from "./TransactionDetail";
 import { dataTransactions } from "../../utils/mock";
 
 const Transaction = (props) => {
-  const { Content } = Layout;
   const columns = [
     {
       title: "Charges",

@@ -12,3 +12,14 @@ export const Container = (props) => {
     </div>
   );
 };
+
+export const AnalyticsContainer = (props) => {
+  return (
+    <div
+      style={{ padding: 24, minHeight: '100vh', margin: '16px 16px' }}
+    >
+      <SubTitle>{props.subTitle}</SubTitle>
+      {props.content}
+    </div>
+  );
+};
