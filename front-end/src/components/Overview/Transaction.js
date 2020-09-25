@@ -4,6 +4,7 @@ import { EyeOutlined } from "@ant-design/icons";
 import TransactionDetail from "./TransactionDetail";
 import { dataTransactions } from "../../utils/mock";
 import styled from 'styled-components'
+import apiService from '../../services/apiVerifySlip'
 
 const EyeStyle = styled(EyeOutlined)`
   svg {
@@ -47,8 +48,12 @@ const Transaction = (props) => {
     },
   ];
 
+  const [objectURL, setObjectURL] = useState('');
   const [showTransactionDetail, setShowTransactionDetail] = useState(true);
-  const handleDetail = () => {
+  const handleDetail = async () => {
+    const responseGetImage = await apiService.getImageFromS3()
+    const url = JSON.parse(responseGetImage.data.body).obj_url
+    setObjectURL(url)
     setShowTransactionDetail(false);
   };
 
@@ -63,7 +68,7 @@ const Transaction = (props) => {
           />
         </div>
       ) : (
-        <TransactionDetail />
+        <TransactionDetail imageURL={objectURL}/>
       )}
     </>
   );
