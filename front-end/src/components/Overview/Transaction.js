@@ -3,6 +3,13 @@ import { Table, Space, Button } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import TransactionDetail from "./TransactionDetail";
 import { dataTransactions } from "../../utils/mock";
+import styled from 'styled-components'
+
+const EyeStyle = styled(EyeOutlined)`
+  svg {
+    margin-bottom: 5px;
+  }
+`
 
 const Transaction = (props) => {
   const columns = [
@@ -32,7 +39,7 @@ const Transaction = (props) => {
       render: () => (
         <Space size="middle">
           <Button
-            icon={<EyeOutlined />}
+            icon={<EyeStyle />}
             onClick={() => handleDetail()}
           ></Button>
         </Space>
