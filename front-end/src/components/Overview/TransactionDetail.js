@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Row, Col, Descriptions, Breadcrumb } from "antd";
 import Slip from "../../slip.jpg";
 
-const Overview = (props) => {
+const TransactionDetail = (props) => {
   const { Header } = Layout;
 
   const columns = [
@@ -80,4 +80,4 @@ const Overview = (props) => {
   );
 };
 
-export default Overview;
+export default TransactionDetail;
