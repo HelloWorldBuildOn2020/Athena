@@ -18,7 +18,7 @@ const Sider = () => {
           <img src={Logo} style={{ padding: 5, margin: '16px 0' }}/>
         </div>
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
+          <Menu.Item key="1" icon={<PieChartOutlined />} onClick={() => window.location.reload()}>
             <span>Overview</span>
             <Link to="/" />
           </Menu.Item>
