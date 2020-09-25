@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Layout, Row, Col, Descriptions, Breadcrumb } from "antd";
 
 
-const Overview = (props) => {
+const TransactionDetail = (props) => {
   const { Header } = Layout;
   const { imageURL } = props
   return (
@@ -55,4 +55,4 @@ const Overview = (props) => {
   );
 };
 
-export default Overview;
+export default TransactionDetail;

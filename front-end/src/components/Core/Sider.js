@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import { PieChartOutlined, IdcardOutlined, SettingOutlined } from "@ant-design/icons";
+import { ContainerOutlined, PieChartOutlined, IdcardOutlined, SettingOutlined } from "@ant-design/icons";
 import Overview from "../Overview";
 import Analytics from "../Analytics";
 import EmailSub from "../EmailSub";
+import Products from "../Products"
 import Logo from "../../athenalogo.png"
 
 const Sider = () => {
@@ -22,11 +23,15 @@ const Sider = () => {
             <span>Overview</span>
             <Link to="/" />
           </Menu.Item>
-          <Menu.Item key="2" icon={<IdcardOutlined />}>
+          <Menu.Item key="2" icon={<ContainerOutlined />}>
+            Category of Product
+            <Link to="/products" />
+          </Menu.Item>
+          <Menu.Item key="3" icon={<IdcardOutlined />}>
             Email Subscription
             <Link to="/emailSub" />
           </Menu.Item>
-          <Menu.Item key="3" icon={<SettingOutlined />}>
+          <Menu.Item key="4" icon={<SettingOutlined />}>
             Analytics
             <Link to="/analytics" />
           </Menu.Item>
@@ -35,6 +40,7 @@ const Sider = () => {
       <Layout className="site-layout">
         <Content>
           <Route exact path="/" component={Overview} />
+          <Route exact path="/products" component={Products} />
           <Route exact path="/analytics" component={Analytics} />
           <Route exact path="/emailSub" component={EmailSub} />
         </Content>
