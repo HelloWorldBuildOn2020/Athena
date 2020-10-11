@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Core/Header";
 import { Container } from "../Core/Container";
+import TableEmail from "./TableEmail"
 
 const EmailSub = (props) => {
   return (
@@ -8,7 +9,7 @@ const EmailSub = (props) => {
       <Header headerTitle="Email Subscription" />
       <Container
         subTitle="Email Subscription"
-        content="Email Subscription Content"
+        content={<TableEmail />}
       />
     </>
   );
