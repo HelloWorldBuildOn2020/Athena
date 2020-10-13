@@ -1,8 +1,7 @@
 FROM python:3.7
 
 RUN apt-get update -y \
-    && apt-get install netcat -y \
-    && apt-get install vim -y \
+    && apt-get install netcat libzbar0 -y \
     && pip install uWSGI==2.0.19.1 \
         Django==3.0.8 \
         django-filter==2.2.0 \
