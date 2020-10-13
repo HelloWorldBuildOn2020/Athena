@@ -17,6 +17,7 @@ phases:
       - echo $ENV_FILE > ./front-end/.env
       - docker build -t $AWS_ECR_REPO:app_front_end -f ./front-end/docker/react/Dockerfile ./front-end
       - docker build -t $AWS_ECR_REPO:athena-nginx-front-end -f ./front-end/docker/nginx/Dockerfile ./front-end
+      - docker build -t $AWS_ECR_REPO:athena:app_back_end -f ./back-end/docker/django/Dockerfile ./back-end
 
   post_build:
     commands:
@@ -24,6 +25,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push $AWS_ECR_REPO:app_front_end
       - docker push $AWS_ECR_REPO:athena-nginx-front-end
+      - docker push $AWS_ECR_REPO:athena:app_back_end
   
 artifacts:
   files:
