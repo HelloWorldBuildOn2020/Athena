@@ -29,6 +29,8 @@ services:
     container_name: "athena-back-end-app"
     entrypoint: /entrypoint.sh
     restart: always
+    env_file: 
+      - .back-end.env
     ports:
       - 8000:8000
     networks:
