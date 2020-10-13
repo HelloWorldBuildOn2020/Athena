@@ -1,8 +1,9 @@
-from pyzbar.pyzbar import decode
-from PIL import Image
 from io import BytesIO
 import os
 import requests
+
+from pyzbar.pyzbar import decode
+from PIL import Image
 
 
 def readQRCode(image_name):
