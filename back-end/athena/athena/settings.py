@@ -91,16 +91,7 @@ WSGI_APPLICATION = 'athena.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': os.environ.get('DATABASE_NAME', 'athena'),
-        'USER': os.environ.get('DATABASE_USER', 'root'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'root'),
-        'HOST': os.environ.get('DATABASE_HOST', '127.0.0.1'),
-        'PORT': os.environ.get('DATABASE_PORT', '3306'),
-    }
-}
+DATABASES = {}
 
 
 # Password validation
