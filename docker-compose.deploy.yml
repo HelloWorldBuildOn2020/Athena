@@ -24,6 +24,19 @@ services:
     networks:
       - athena
 
+  back-end:
+    image: "192479299400.dkr.ecr.ap-southeast-2.amazonaws.com/athena:app_back_end"
+    container_name: "athena-back-end-app"
+    entrypoint: /entrypoint.sh
+    restart: always
+    ports:
+      - 8000:8000
+    build:
+      context: ./back-end
+      dockerfile: docker/django/Dockerfile
+    networks:
+      - athena
+
 volumes:
   build:
 
