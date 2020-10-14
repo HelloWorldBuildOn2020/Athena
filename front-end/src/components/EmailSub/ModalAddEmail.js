@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button, Form, Input, Checkbox, Row } from "antd";
+import { Modal, Button, Form, Input, Row, Radio } from "antd";
 import { P } from "../Core/Text";
 import color from "../../Config/Color";
 
@@ -47,29 +47,20 @@ const ModalAddEmail = (props) => {
             name="role"
             label="Role"
             rules={[
-              { required: true, message: "Please select at least one role!" },
+              {
+                required: true,
+                message: "Please input your email subscription!",
+              },
             ]}
           >
-            <Checkbox.Group>
-              <Row>
-                <Checkbox value="Disputes, ">Disputes</Checkbox>
-              </Row>
-              <Row>
-                <P color={color.description}>
-                  Dispute notifications and the resolution process.
-                </P>
-              </Row>
-              <Row>
-                <Checkbox value="Links, ">Links</Checkbox>
-                <br />
-              </Row>
-              <Row>
-                <P color={color.description}>
-                  Notification when a charge is paid successfully via Links. The
-                  same email also be sent to the money transfer.
-                </P>
-              </Row>
-            </Checkbox.Group>
+            <Row>
+              <Radio defaultChecked value="Disputes">
+                Disputes:
+              </Radio>
+              <P color={color.description}>
+                Dispute notifications and the resolution process.
+              </P>
+            </Row>
           </Form.Item>
           <Form.Item shouldUpdate>
             {() => (
