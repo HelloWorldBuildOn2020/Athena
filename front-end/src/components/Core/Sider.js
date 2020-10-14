@@ -7,6 +7,7 @@ import Analytics from "../Analytics";
 import EmailSub from "../EmailSub";
 import Products from "../Products"
 import Logo from "../../athenalogo.png"
+import Transaction from "../Overview/TransactionDetail"
 
 const Sider = () => {
   const { Header, Content, Footer, Sider } = Layout;
@@ -43,6 +44,7 @@ const Sider = () => {
           <Route exact path="/products" component={Products} />
           <Route exact path="/analytics" component={Analytics} />
           <Route exact path="/emailSub" component={EmailSub} />
+          <Route exact path="/transaction/detail/:image" component={Transaction} />
         </Content>
         <Footer style={{ textAlign: 'center' }}>
           Athena of Build On Thailand ©2020 Created by HelloWorld

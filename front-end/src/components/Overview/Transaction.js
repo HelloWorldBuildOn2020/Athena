@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Space, Button } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
-import TransactionDetail from "./TransactionDetail";
-import { dataTransactions } from "../../utils/mock";
 import styled from 'styled-components'
-import apiService from '../../services/apiVerifySlip'
+import apiOverview from '../../services/apiOverviewService'
+import {useHistory} from 'react-router-dom'
 
 const EyeStyle = styled(EyeOutlined)`
   svg {
@@ -16,61 +15,70 @@ const Transaction = (props) => {
   const columns = [
     {
       title: "Charges",
-      dataIndex: "charges",
+      dataIndex: "amount",
       key: "charges",
     },
     {
       title: "Verification Code",
-      dataIndex: "verification_code",
+      dataIndex: "transfer_ref",
       key: "verification_code",
     },
     {
       title: "Verify Status",
-      dataIndex: "verify_status",
+      dataIndex: "status",
       key: "verify_status",
     },
     {
       title: "Date",
-      dataIndex: "date",
       key: "date",
+      render: (row) => {
+        const year = row.date.substring(0, 4)
+        const mouth = row.date.substring(4, 6)
+        const day = row.date.substring(6, 8)
+        return (
+          <span>
+            {year}-{mouth}-{day}
+          </span>
+        )
+      }
     },
     {
       title: "Action",
       key: "action",
-      render: () => (
+      render: (row) => (
         <Space size="middle">
           <Button
             icon={<EyeStyle />}
-            onClick={() => handleDetail()}
+            onClick={() => handleDetail(row)}
           ></Button>
         </Space>
       ),
     },
   ];
+  const history = useHistory()
+  const [data, setData] = useState([])
 
-  const [objectURL, setObjectURL] = useState('');
-  const [showTransactionDetail, setShowTransactionDetail] = useState(true);
-  const handleDetail = async () => {
-    const responseGetImage = await apiService.getImageFromS3()
-    const url = JSON.parse(responseGetImage.data.body).obj_url
-    setObjectURL(url)
-    setShowTransactionDetail(false);
+  const handleDetail = async (data) => {
+    history.push({
+      pathname: '/transaction/detail/' + data.image_name,
+      state: { detail: data }
+    })
   };
 
+  useEffect(() => {
+    const getData = async () => {
+      let response = await apiOverview.getOverview()
+      setData(JSON.parse(response.data.body))
+    }
+    getData()
+  }, [])
+
   return (
-    <>
-      {showTransactionDetail ? (
-        <div>
-          <Table
-            dataSource={dataTransactions}
-            columns={columns}
-            pagination={{ defaultPageSize: 10 }}
-          />
-        </div>
-      ) : (
-        <TransactionDetail imageURL={objectURL}/>
-      )}
-    </>
+    <Table
+      dataSource={data}
+      columns={columns}
+      pagination={{ defaultPageSize: 10 }}
+    />
   );
 };
 
