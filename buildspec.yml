@@ -3,6 +3,8 @@ version: 0.2
 env:
   parameter-store:
     ENV_FILE_FE: "REACT_APP_API"
+    ENV_FILE_FE_2: "REACT_APP_API_2"
+    ENV_FILE_FE_3: "REACT_APP_API_3"
     ENV_FILE_BE: "BACK_END_API"
 
 
@@ -17,6 +19,8 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - echo $ENV_FILE_FE > ./front-end/.env
+      - echo $ENV_FILE_FE_2 >> ./front-end/.env
+      - echo $ENV_FILE_FE_3 >> ./front-end/.env
       - echo $ENV_FILE_BE > ./.back-end.env
       - docker build -t $AWS_ECR_REPO:app_front_end -f ./front-end/docker/react/Dockerfile ./front-end
       - docker build -t $AWS_ECR_REPO:athena-nginx-front-end -f ./front-end/docker/nginx/Dockerfile ./front-end
