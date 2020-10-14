@@ -13,10 +13,6 @@ const APIVerifySlip = {
       header
     );
     return response;
-  },
-  getImageFromS3: async () => {
-    let response = await api.get(`/image-s3`)
-    return response
   }
 };
 
