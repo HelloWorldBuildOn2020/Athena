@@ -47,7 +47,7 @@ const TransactionDetail = (props) => {
             </Descriptions>
           </Col>
           <Col span={12} className="d-flex justify-content-center pr-0 pl-5">
-            <img src={imageURL} width="80%" />
+            <img src={imageURL} width="60%" />
           </Col>
         </Row>
       </div>
