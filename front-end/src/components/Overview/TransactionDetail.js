@@ -32,7 +32,7 @@ const Detail = ({ imageURL, detail }) => {
       <div>
       <Row gutter={[16, 16]}>
         <Col span={12} className="d-flex justify-content-center pr-0 pl-5">
-          <img src={imageURL} width="80%" />
+          <img src={imageURL} width="60%" />
         </Col>
         <Col span={12}>
           <Descriptions
