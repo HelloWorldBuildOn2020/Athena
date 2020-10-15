@@ -40,12 +40,6 @@ const TableProducts = (props) => {
       editable: true,
     },
     {
-      title: "Tutor",
-      dataIndex: "tutor",
-      key: "tutor",
-      editable: true,
-    },
-    {
       title: "Action",
       key: "action",
       render: () => (
@@ -53,11 +47,11 @@ const TableProducts = (props) => {
           <Popconfirm title="Sure to delete?" onConfirm={handleDelete}>
             <Button icon={<DeleteFilled />}></Button>
           </Popconfirm>
-          <Button 
+          <Button
             icon={<EditFilled />}
-            style={{ margin: "5px 5px" }} 
-            onClick={() => setShowModalEdit(true)}>
-          </Button>
+            style={{ margin: "5px 5px" }}
+            onClick={() => setShowModalEdit(true)}
+          ></Button>
         </>
       ),
     },
@@ -69,8 +63,9 @@ const TableProducts = (props) => {
 
   return (
     <>
-      <Button className="float-right"
-        style={{ margin: "5px 5px" }} 
+      <Button
+        className="float-right"
+        style={{ margin: "5px 5px" }}
         type="primary"
         icon={<PlusCircleFilled />}
         data-testid="add-content-button"

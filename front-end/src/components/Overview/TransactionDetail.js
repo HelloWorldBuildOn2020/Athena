@@ -87,18 +87,22 @@ const Detail = ({ imageURL, detail }) => {
           </Descriptions>
         </Col>
       </Row>
-      </div>
+     </div>
     </>
   )
-}
+};
 
 const TransactionDetail = (props) => {
-  const { location } = props
-  const imageURL = process.env.REACT_APP_S3_URL + location.state.detail.image_name
+  const { location } = props;
+  const imageURL =
+    process.env.REACT_APP_S3_URL + location.state.detail.image_name;
   return (
     <>
       <Header headerTitle="Overview" />
-      <Container subTitle="Transaction" content={<Detail imageURL={imageURL} detail={location.state.detail} />}/>
+      <Container
+        subTitle="Transaction"
+        content={<Detail imageURL={imageURL} detail={location.state.detail} />}
+      />
     </>
   );
 };
