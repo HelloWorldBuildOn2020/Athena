@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button, Form, Input } from 'antd';
+import { Modal, Button, Form, Input } from "antd";
 
 const ModalEditProduct = (props) => {
   const { show, handleOnAdd, setShowModalEdit } = props;
@@ -8,13 +8,12 @@ const ModalEditProduct = (props) => {
     product_name: "",
     product_category: "",
     price: null,
-    tutor: "",
   };
 
   const handleOnClose = () => {
-    setShowModalEdit(false)
+    setShowModalEdit(false);
     form.resetFields();
-  }
+  };
 
   return (
     <>
@@ -43,7 +42,10 @@ const ModalEditProduct = (props) => {
             label="Product Category"
             name="product_category"
             rules={[
-              { required: true, message: "Please input your product category!" },
+              {
+                required: true,
+                message: "Please input your product category!",
+              },
             ]}
           >
             <Input />
@@ -55,17 +57,10 @@ const ModalEditProduct = (props) => {
           >
             <Input type="number" />
           </Form.Item>
-          <Form.Item
-            label="Tutor"
-            name="tutor"
-            rules={[{ required: true, message: "Please input your tutor!" }]}
-          >
-            <Input />
-          </Form.Item>
           <Form.Item shouldUpdate>
             {() => (
               <>
-                <Button htmlType="button" onClick={handleOnClose} >
+                <Button htmlType="button" onClick={handleOnClose}>
                   Cancel
                 </Button>
                 <Button
