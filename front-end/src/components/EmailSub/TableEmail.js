@@ -1,11 +1,21 @@
-import React, { useState } from "react";
-import { Button, Layout, Table, Popconfirm, Col, Row } from "antd";
-import { PlusCircleFilled, DeleteFilled, EditFilled } from "@ant-design/icons";
+import React, { useState, useEffect } from "react";
+import { Button, Layout, Table, Popconfirm } from "antd";
+import { PlusCircleFilled, DeleteFilled } from "@ant-design/icons";
 import ModalAddEmail from "./ModalAddEmail";
+import apiService from "../../services/apiEmailSubscription"
 
 const TableEmail = (props) => {
   const [showModalAdd, setShowModalAdd] = useState(false);
   const [values, setValues] = useState([]);
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      let response = await apiService.getEmail()
+      setData(JSON.parse(response.data.body))
+    }
+    getData()
+  }, [])
 
   const handleAdd = (data) => {
     setValues([
@@ -29,7 +39,9 @@ const TableEmail = (props) => {
       title: "Role",
       dataIndex: "role",
       key: "role",
-      editable: true,
+      render: () => {
+        return <span>Disputes</span>
+      }
     },
     ,
     {
@@ -62,7 +74,7 @@ const TableEmail = (props) => {
         Add Email
       </Button>
       <Layout.Content>
-        <Table dataSource={values} columns={columns} />
+        <Table dataSource={data} columns={columns} />
       </Layout.Content>
       <ModalAddEmail
         show={showModalAdd}
