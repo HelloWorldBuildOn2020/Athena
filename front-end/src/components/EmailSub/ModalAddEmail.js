@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Button, Form, Input, Row, Radio } from "antd";
 import { P } from "../Core/Text";
 import color from "../../Config/Color";
+import apiService from "../../services/apiEmailSubscription"
 
 const ModalAddEmail = (props) => {
   const { show, handleOnAdd, setShowModalAdd } = props;
   const [form] = Form.useForm();
+  const [email, setEmail] = useState('')
   const initialValues = {
     email: "",
     role: "",
@@ -15,6 +17,13 @@ const ModalAddEmail = (props) => {
     setShowModalAdd(false);
     form.resetFields();
   };
+
+  const handleSubmit = async () => {
+    let data = { "email" : email }
+    await apiService.createEmail(data)
+    handleOnClose()
+    window.location.reload()
+  }
 
   return (
     <>
@@ -26,8 +35,6 @@ const ModalAddEmail = (props) => {
       >
         <Form
           form={form}
-          initialValues={initialValues}
-          onFinish={handleOnAdd}
           layout="vertical"
         >
           <Form.Item
@@ -41,7 +48,7 @@ const ModalAddEmail = (props) => {
               { type: "email" },
             ]}
           >
-            <Input />
+            <Input onChange={(e) => setEmail(e.target.value)}/>
           </Form.Item>
           <Form.Item
             name="role"
@@ -70,13 +77,11 @@ const ModalAddEmail = (props) => {
                 </Button>
                 <Button
                   style={{ margin: "5px 5px" }}
-                  type="primary"
-                  htmlType="submit"
                   disabled={
-                    !form.isFieldsTouched(true) ||
-                    form.getFieldsError().filter(({ errors }) => errors.length)
-                      .length
+                    !form.isFieldsTouched(false) ||
+                    form.getFieldsError().filter(({ errors }) => errors.length).length
                   }
+                  onClick={handleSubmit}
                 >
                   Add
                 </Button>
